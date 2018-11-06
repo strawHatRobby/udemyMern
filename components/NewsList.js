@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewsItem from './NewsItem';
 
 class NewsList extends Component {
   constructor(props){
@@ -9,12 +10,15 @@ class NewsList extends Component {
   }
 
   render(){
+      const styles={
+          ul: {
+              'list-style-type': 'none',
+              'text-align': 'left'
+          }
+      }
       const renderNews = this.props.news.map((item) => {
            return (
-               <li key={item.id}>
-              <h4>{item.title}</h4>
-                  <p>{item.feed}</p>
-              </li>
+                <NewsItem item={item}/>
               )
           })
       
@@ -22,7 +26,7 @@ class NewsList extends Component {
       <div> 
         
         <h1>News List</h1>
-        <ul>
+        <ul style={styles.ul}>
         {renderNews}
         </ul>
         </div>

@@ -4,7 +4,8 @@ class Header extends Component {
   constructor(props){
     super(props);
     this.state = {
-        searchTerm: ''
+        searchTerm: '',
+        isTypingColor: '#04a9f4'
         
     }
       this.setInputVale = this.setInputVale.bind(this);
@@ -15,13 +16,24 @@ class Header extends Component {
         this.setState({
             searchTerm: event.target.value 
         })
+
+        if (event.target.value){
+            this.setState({
+                isTypingColor: 'red'
+            })
+        }
+        else{
+            this.setState({
+                isTypingColor: '#04a9f4'
+            })
+        }
         console.log("the new value is " + this.state.searchTerm);
     }
   render(){
       const styles = {
           
           header: {
-              background: '#03a9f4',
+              background: this.state.isTypingColor,
               padding: '10px'
           },
           logo: {
